@@ -1,4 +1,5 @@
 "use strict";
+// Object.defineProperty(exports, "__esModule", { value: true });
 var Rate;
 (function (Rate) {
     Rate["low"] = "Th\u1EA5p";
@@ -34,7 +35,7 @@ const ListProduct = () => {
             <td>${item.name}</td>
             <td>${item.price}</td>
             <td>${item.rate}</td>
-            <td>${item.sale? "sale":"hết sale"}</td>
+            <td>${item.sale}</td>
         </tr>
         `;
     });
@@ -51,9 +52,11 @@ const totalPrice = (products) => {
     return products.reduce((sum, item) => sum + item.price, 0);
 };
 console.log("Tổng giá sản phẩm:", totalPrice(Products));
-const filterSaleAndRate = (products) => products.filter(item => {
-    item.sale === true &&
-        (item.rate === Rate.hight || item.rate === Rate.medium);
-});
+const filterSaleAndRate = (products) => {
+    return products.filter(item => {
+        return item.sale === true &&
+            (item.rate === Rate.hight || item.rate === Rate.medium);
+    });
+};
 console.log("Sản phẩm sale & rate >= Trung bình:", filterSaleAndRate(Products));
 //# sourceMappingURL=main.js.map

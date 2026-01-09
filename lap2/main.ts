@@ -67,9 +67,10 @@ const totalPrice = (products: Product[]): number => {
 
 console.log("Tổng giá sản phẩm:", totalPrice(Products));
 
-const filterSaleAndRate = (products: Product[]): Product[] =>
-  products.filter(item=>{
-        item.sale === true && 
+const filterSaleAndRate = (products: Product[]): Product[] =>{
+    return products.filter(item=>{
+        return item.sale === true && 
         (item.rate === Rate.hight || item.rate=== Rate.medium);
     });
+}
 console.log("Sản phẩm sale & rate >= Trung bình:", filterSaleAndRate(Products));
